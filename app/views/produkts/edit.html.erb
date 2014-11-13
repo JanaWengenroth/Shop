@@ -1,0 +1,10 @@
+<h1>Editing produkt</h1>
+
+<%= form_for @produkt, :url => produkts_path, :html => { :multipart => true } do |form| %>
+    <%= form.file_field :bild %>
+  <% end %>
+
+<%= render 'form' %>
+
+<%= link_to 'Show', @produkt %> |
+<%= link_to 'Back', produkts_path %>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Sofaladen</title>
+        <%= stylesheet_link_tag    "application", :media => "all" %>
+        <%= javascript_include_tag "application" %>
+        <%= csrf_meta_tags %>
+
+        <script type="text/javascript">
+          function about() {
+              info = document.getElementById('about-content');
+              if (window.XMLHttpRequest)
+              {
+                  xhr = new XMLHttpRequest();
+              }
+              else
+              {
+                  xhr = new ActiveXObject("Microsoft.XMLHTTP");
+              }
+              xhr.open("GET", "rails/info/properties", false);
+              xhr.send("");
+              info.innerHTML = xhr.responseText;
+              info.style.display = 'block'
+          }
+        </script>
+    </head>
+    <body>
+        <div id="page">
+            <div id="header">
+                <img src="/assets/logo.png" />
+            </div>
+
+            <div id="sidebar">
+                <ul id="sidebar-items">
+                    <li>
+                        <h3>Artikel suchen</h3>
+                        <%= form_tag(search_path, method: "get") do %>
+                          <%= text_field_tag(:suchbegriff, '', size: 17)%>  
+                          <%= submit_tag("Los") %>
+                        <% end %>
+                    </li>
+                </ul>
+            </div>
+
+            <div id="content">
+                <%= yield %>
+            </div>
+
+            <div id="footer">
+                &copy; Louisa Spahl und Jana Wengenroth (für BW2-Praktikum WS14-15)
+            </div>
+        </div>
+
+    </body>
+</html>

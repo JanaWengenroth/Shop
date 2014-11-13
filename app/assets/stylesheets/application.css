@@ -1,0 +1,103 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or vendor/assets/stylesheets of plugins, if any, can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the top of the
+ * compiled file, but it's generally better to create a new file per style scope.
+ *
+ *= require_self
+ *= require_tree .
+ */
+body {
+    margin: 0;
+    margin-bottom: 25px;
+    padding: 0;
+    background-color: #f0f0f0;
+    font-family: "Lucida Grande", "Bitstream Vera Sans", "Verdana";
+    font-size: 13px;
+    color: #333;
+}
+
+h1 {
+    font-size: 28px;
+    color: #000;
+}
+
+h2 {
+    font-size: 22px;
+    color: #000;
+}
+
+h3 {
+    font-size: 16px;
+    color: #000;
+}
+
+a  {color: #03c}
+a:hover {
+    background-color: #03c;
+    color: white;
+    text-decoration: none;
+}
+
+#page {
+    width: 1200px;
+    margin: 15px auto 0 auto;
+    background-color: #f0f0f0;
+    border: 2px solid #666;
+}
+
+#content {
+    background-color: #fff;
+    float: left;
+    padding: 5px 15px 15px 15px;
+    width: 900px;
+    border-right: 1px solid #666;
+}
+
+#sidebar {
+    float: right;
+    width: 250px;
+}
+
+#footer {
+    text-align: center;
+    border-top: 1px solid #666;
+    clear: both;
+}
+
+#header {
+    border-bottom: 1px solid #666;
+    height: 305px;
+}
+#header h1, #header h2 {margin: 0}
+#header h2 {
+    color: #888;
+    font-weight: normal;
+    font-size: 16px;
+}
+
+#sidebar ul {
+    margin-left: 0;
+    padding-left: 0;
+}
+#sidebar ul h3 {
+    margin-top: 25px;
+    font-size: 16px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #ccc;
+}
+#sidebar li {
+    list-style-type: none;
+}
+#sidebar ul.links li {
+    margin-bottom: 5px;
+}
+
+.filename {
+    font-style: italic;
+}
+
