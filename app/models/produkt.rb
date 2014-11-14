@@ -9,6 +9,9 @@ end
 
 class Produkt < ActiveRecord::Base
 
+  def self.search(query)
+    where("name LIKE (?)", "%#{query}%")
+  end
   
   has_attached_file :bild, :styles => { :small => "150x150>" },
  :url => "/assets/produkts/:id/:style/:basename.:extension",
