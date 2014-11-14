@@ -3,10 +3,11 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/D:/sofaladen/app/views/produkts/index.html.erb</file>
-            <file>file:/D:/sofaladen/app/views/produkts/show.html.erb</file>
-            <file>file:/D:/sofaladen/app/views/produkts/_form.html.erb</file>
-            <file>file:/D:/sofaladen/app/views/layouts/application.html.erb</file>
+            <file>file:/C:/Users/Louisa/Documents/GitHub/Shop/config/database.yml</file>
+            <file>file:/C:/Users/Louisa/Documents/GitHub/Shop/Gemfile</file>
+            <file>file:/C:/Users/Louisa/Documents/GitHub/Shop/db/migrate/20141113093826_create_produkts.rb</file>
+            <file>file:/C:/Users/Louisa/Documents/GitHub/Shop/db/schema.rb</file>
+            <file>file:/C:/Users/Louisa/Documents/GitHub/Shop/db/migrate/20141113101534_add_attachment_bild_to_produkts.rb</file>
         </group>
     </open-files>
 </project-private>

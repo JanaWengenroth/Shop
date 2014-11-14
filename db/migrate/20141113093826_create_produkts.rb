@@ -8,6 +8,8 @@ class CreateProdukts < ActiveRecord::Migration
       t.date :gueltigVon
       t.date :gueltigBis
 
+      t.attachment :bild
+      
       t.timestamps
       t.string "bild_file_name"
       t.string "bild_content_type"
