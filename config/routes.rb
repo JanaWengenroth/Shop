@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :kundes
+
   resources :produkts
 
   get 'search' => 'produkts#search'

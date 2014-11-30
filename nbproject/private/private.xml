@@ -4,8 +4,12 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
             <file>file:/D:/Shop/app/controllers/application_controller.rb</file>
+            <file>file:/D:/Shop/test/controllers/kundes_controller_test.rb</file>
+            <file>file:/D:/Shop/app/controllers/kundes_controller.rb</file>
+            <file>file:/D:/Shop/db/migrate/20141130015600_create_kundes.rb</file>
             <file>file:/D:/Shop/app/models/produkt.rb</file>
             <file>file:/D:/Shop/app/controllers/produkts_controller.rb</file>
+            <file>file:/D:/Shop/app/models/kunde.rb</file>
         </group>
     </open-files>
 </project-private>
