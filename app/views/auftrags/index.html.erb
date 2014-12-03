@@ -5,6 +5,8 @@
     <tr>
       <th>Datum</th>
       <th>Stueckzahl</th>
+      <th>KundenID</th>
+      <th>ProduktID</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -14,6 +16,8 @@
       <tr>
         <td><%= auftrag.datum %></td>
         <td><%= auftrag.stueckzahl %></td>
+        <td><%= auftrag.kunden_id %></td>
+        <td><%= auftrag.produkt_id %></td>
         <td><%= link_to 'Show', auftrag %></td>
         <td><%= link_to 'Edit', edit_auftrag_path(auftrag) %></td>
         <td><%= link_to 'Destroy', auftrag, method: :delete, data: { confirm: 'Are you sure?' } %></td>

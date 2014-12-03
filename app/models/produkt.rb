@@ -9,6 +9,9 @@ end
 
 class Produkt < ActiveRecord::Base
 
+  has_many:auftrag
+  has_many:kunde, :through => :auftrag
+  
   def self.search(query)
     where("name LIKE (?)", "%#{query}%")
   end

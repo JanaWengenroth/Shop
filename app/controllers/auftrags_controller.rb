@@ -69,6 +69,6 @@ class AuftragsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def auftrag_params
-      params.require(:auftrag).permit(:datum, :stueckzahl)
+      params.require(:auftrag).permit(:datum, :stueckzahl,:kunden_id, :produkt_id)
     end
 end

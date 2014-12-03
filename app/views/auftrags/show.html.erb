@@ -10,5 +10,15 @@
   <%= @auftrag.stueckzahl %>
 </p>
 
+<p>
+  <strong>KundenID:</strong>
+  <%= @auftrag.kunden_id %>
+</p>
+
+<p>
+  <strong>ProduktID:</strong>
+  <%= @auftrag.produkt_id %>
+</p>
+
 <%= link_to 'Edit', edit_auftrag_path(@auftrag) %> |
 <%= link_to 'Back', auftrags_path %>

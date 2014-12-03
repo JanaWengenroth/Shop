@@ -1,4 +1,19 @@
 <!DOCTYPE html>
+
+<%
+  
+  users = ["Alice", "Bob", "Eve", "Administrator"]
+  
+ 
+
+  if (not params[:user_post].nil?) and users.include?(params[:user_post])
+    selected = params[:user_post]
+    session[:user_session] = params[:user_post]
+  else
+    selected = session[:user_session]
+  end
+%>
+
 <html>
     <head>
         <title>Sofaladen</title>
@@ -28,14 +43,17 @@
         <div id="page">
             <div id="header">
                 <img src="/assets/logo.png" />
-                <%=
+                <%
                   if session[:first_access].nil?
                     session[:first_access] = Time.now.inspect
                   end
                   
-                  ""
+                  showuser = 'nil!'
+                  if not session[:user_session].nil?
+                    showuser = session[:user_session]
+                  end
                 %>
-                <%= session[:session_id] + " --- " + session[:first_access] %>
+                <%= session[:session_id] + " --- " + session[:first_access] + " --- " + showuser%>
             </div>
 
             <div id="sidebar">
@@ -49,6 +67,24 @@
                     </li>
                     <li>
                         <h3>Benutzer auswählen</h3>
+                        <form method="GET">
+                          <select name="user_post">
+                            <% users.each { |user| %>
+                            <%   if user == selected %>
+                            <option selected><%= user %> </option>
+                            <%   else %>
+                            <option><%= user %> </option>
+                            <%   end %>
+                            <% } %>
+                          </select>
+                          <input type="submit" value="OK">
+                        </form>
+                    </li>
+                    <li>
+                        <h3>Navigation</h3>
+                        <a href="/auftrags">Aufträge</a><br>
+                        <a href="/kundes">Kunden</a><br>
+                        <a href="/produkts">Produkte</a><br>
                     </li>
                 </ul>
             </div>
