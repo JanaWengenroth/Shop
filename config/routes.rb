@@ -1,6 +1,10 @@
 Rails.application.routes.draw do
+  resources :auftrags
+
   resources :kundes
 
+  
+  
   resources :produkts
 
   get 'search' => 'produkts#search'

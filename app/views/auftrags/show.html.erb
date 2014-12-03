@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Datum:</strong>
+  <%= @auftrag.datum %>
+</p>
+
+<p>
+  <strong>Stueckzahl:</strong>
+  <%= @auftrag.stueckzahl %>
+</p>
+
+<%= link_to 'Edit', edit_auftrag_path(@auftrag) %> |
+<%= link_to 'Back', auftrags_path %>

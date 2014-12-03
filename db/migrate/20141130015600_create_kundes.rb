@@ -5,9 +5,9 @@ class CreateKundes < ActiveRecord::Migration
       t.string :nachname
       t.string :email
       t.string :strasse
-      t.int :hausnummer
-      t.int :plz
-      t.int :tel
+      t.integer :hausnummer
+      t.integer :plz
+      t.integer :tel
 
       t.timestamps
     end
