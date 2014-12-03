@@ -28,6 +28,14 @@
         <div id="page">
             <div id="header">
                 <img src="/assets/logo.png" />
+                <%=
+                  if session[:first_access].nil?
+                    session[:first_access] = Time.now.inspect
+                  end
+                  
+                  ""
+                %>
+                <%= session[:session_id] + " --- " + session[:first_access] %>
             </div>
 
             <div id="sidebar">
@@ -38,6 +46,9 @@
                           <%= text_field_tag(:suchbegriff, '', size: 17)%>  
                           <%= submit_tag("Los") %>
                         <% end %>
+                    </li>
+                    <li>
+                        <h3>Benutzer auswählen</h3>
                     </li>
                 </ul>
             </div>
