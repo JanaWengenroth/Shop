@@ -60,7 +60,7 @@
                 <ul id="sidebar-items">
                     <li>
                         <h3>Artikel suchen</h3>
-                        <%= form_tag(search_path, method: "get") do %>
+                          <%= form_tag(search_path, method: "get") do %>
                           <%= text_field_tag(:suchbegriff, '', size: 17)%>  
                           <%= submit_tag("Los") %>
                         <% end %>
@@ -85,6 +85,7 @@
                         <a href="/auftrags">Aufträge</a><br>
                         <a href="/kundes">Kunden</a><br>
                         <a href="/produkts">Produkte</a><br>
+                        <a href="/unterprodukts/stuecklist">Stueckliste</a><br>
                     </li>
                 </ul>
             </div>

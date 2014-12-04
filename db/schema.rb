@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141203222448) do
+ActiveRecord::Schema.define(version: 20141204212350) do
 
   create_table "auftrags", force: true do |t|
     t.date     "datum"
@@ -54,6 +54,8 @@ ActiveRecord::Schema.define(version: 20141203222448) do
     t.integer  "menge"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "oberprodukt_id"
+    t.integer  "unterprodukt_id"
   end
 
 end

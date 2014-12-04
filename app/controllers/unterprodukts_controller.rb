@@ -20,7 +20,18 @@ class UnterproduktsController < ApplicationController
   # GET /unterprodukts/1/edit
   def edit
   end
-
+   
+  
+  def stuecklist
+    tmp[] = Produkt.get_oberprodukt()
+    
+    tmp.each do |obj|
+      obj.name
+    end
+    
+  end
+  
+  
   # POST /unterprodukts
   # POST /unterprodukts.json
   def create
@@ -71,4 +82,9 @@ class UnterproduktsController < ApplicationController
     def unterprodukt_params
       params.require(:unterprodukt).permit(:menge)
     end
+    
+   
+    
+   
+
 end
