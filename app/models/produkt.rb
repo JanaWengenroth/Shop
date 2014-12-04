@@ -12,6 +12,9 @@ class Produkt < ActiveRecord::Base
   has_many:auftrag
   has_many:kunde, :through => :auftrag
   
+  has_many :oberprodukte, :class_name => 'Unterprodukt', :foreign_key => 'oberprodukt_id'
+  has_many :unterprodukte, :class_name => 'Unterprodukt', :foreign_key => 'unterprodukt_id'
+  
   def self.search(query)
     where("name LIKE (?)", "%#{query}%")
   end

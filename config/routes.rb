@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :unterprodukts
+
   resources :auftrags
 
   resources :kundes

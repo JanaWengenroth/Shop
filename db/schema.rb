@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141203194658) do
+ActiveRecord::Schema.define(version: 20141203222448) do
 
   create_table "auftrags", force: true do |t|
     t.date     "datum"
@@ -48,6 +48,12 @@ ActiveRecord::Schema.define(version: 20141203194658) do
     t.string   "bild_content_type"
     t.integer  "bild_file_size"
     t.datetime "bild_updated_at"
+  end
+
+  create_table "unterprodukts", force: true do |t|
+    t.integer  "menge"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
 end
