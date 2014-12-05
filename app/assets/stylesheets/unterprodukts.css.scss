@@ -1,3 +1,39 @@
 // Place all the styles related to the Unterprodukts controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+table#stueckliste {    
+    width: 900px;
+    padding: 0;
+    margin: 0;
+}
+
+table#stueckliste th {
+    background-color: #ffddbb;
+    text-align: left;   
+    padding: 4px; 
+}
+
+table#stueckliste td {
+    padding: 4px;
+}
+
+table#stueckliste tr:nth-child(2n+1) {
+    background-color: #f0f0f0;
+}
+
+table#stueckliste td.tiefe1 {
+    padding-left: 40px !important;
+}
+
+table#stueckliste td.tiefe2 {
+    padding-left: 80px !important;
+}
+
+table#stueckliste td.tiefe3 {
+    padding-left: 120px !important;
+}
+
+table#stueckliste td.tiefe4 {
+    padding-left: 160px !important;
+}
