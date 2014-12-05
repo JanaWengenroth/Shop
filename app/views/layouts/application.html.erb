@@ -81,13 +81,13 @@
                         </form>
                     </li>
                     <li>
+                     
                         <h3>Navigation</h3>
                         <%  if Kunde.where(:email => session[:user_session]).first.rolle == 1%>
                         <a href="/auftrags">Aufträge</a><br>
                         <a href="/kundes">Kunden</a><br>
                         <a href="/produkts">Produkte</a><br>
                         <a href="/unterprodukts/stuecklist">Stueckliste</a><br>
-                        
                         <%  else%>
                           <a href="/produkts">Produkte</a><br>
                           <% end %>
