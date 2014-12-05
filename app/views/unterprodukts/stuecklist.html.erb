@@ -1,2 +1,31 @@
-<h1>Stueckliste anzeigen lassen</h1>
-<%#*<p>Find me in app/views/unterprodukts/stuecklist.html.erb</p>%>
+<h1>Unterproduktliste</h1>
+
+
+<% def rec_produkt(entry, oberprodukt_menge) %>
+  <ul>
+    <% entry.oberprodukte.each do |obj|  
+      artikel = Produkt.find(obj.unterprodukt_id) %>
+      <li>
+        <%= artikel.name %> 
+        <%= obj.menge * oberprodukt_menge %>
+      </li>
+      <% rec_produkt(artikel, obj.menge)
+    end %>
+  </ul>
+<% end %>
+
+
+  <ul>
+    <% @unterprodukt.each do |unterprodukt| %>
+      <li>
+        <%=  unterprodukt.name %>
+      </li>
+      <%  rec_produkt(unterprodukt, 1) %>
+           
+    <% end %>
+  </ul>
+ 
+
+
+<br>
+

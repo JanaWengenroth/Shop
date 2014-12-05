@@ -5,9 +5,6 @@ class Unterprodukt < ActiveRecord::Base
 
 
 
- def self.show_stuecklist(produkts)
-    where("name LIKE (?)", "%#{produkts}%")
- end
   
  
 end

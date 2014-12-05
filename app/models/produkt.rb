@@ -26,6 +26,10 @@ class Produkt < ActiveRecord::Base
   end
  
   
+#  def show_stuecklist()
+#     where("oberprodukt_id LIKE (?)", "%#{self}%")
+#  end
+  
   has_attached_file :bild, :styles => { :small => "150x150>" },
  :url => "/assets/produkts/:id/:style/:basename.:extension",
  :path => ":rails_root/public/assets/produkts/:id/:style/:basename.:extension"
