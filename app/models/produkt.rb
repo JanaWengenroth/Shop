@@ -22,7 +22,7 @@ class Produkt < ActiveRecord::Base
   
   public
   def self.get_oberprodukt()
-    where("kategorie = 'A'")
+    where(:kategorie => 'A')
   end
  
   

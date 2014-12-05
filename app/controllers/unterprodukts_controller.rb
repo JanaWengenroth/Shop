@@ -4,7 +4,7 @@ class UnterproduktsController < ApplicationController
   # GET /unterprodukts
   # GET /unterprodukts.json
   def index
-    @unterprodukts = Unterprodukt.all
+    @unterprodukt = Unterprodukt.all
   end
 
   # GET /unterprodukts/1
@@ -23,11 +23,9 @@ class UnterproduktsController < ApplicationController
    
   
   def stuecklist
-#    tmp[] = Produkt.get_oberprodukt()
-#    
-#    tmp.each do |obj|
-#      obj.name
-#    end
+    @unterprodukt = Produkt.get_oberprodukt()
+#   
+    render "index"
     
   end
   
@@ -80,7 +78,7 @@ class UnterproduktsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def unterprodukt_params
-      params.require(:unterprodukt).permit(:menge)
+      params.require(:unterprodukt).permit(:menge, :oberprodukt_id, :unterprodukt_id)
     end
     
    

@@ -3,19 +3,21 @@
 <table>
   <thead>
     <tr>
-      <th>Oberprodukt</th>
-      <th>Unterprodukt</th>
-      <th>Menge</th>
+      <%#*<th>Oberprodukt</th>%>
+      <%#*<th>Unterprodukt</th>%>
+      <%#*<th>Menge</th>%>
+      <th>Name</th>
       <th colspan="3"></th>
     </tr>
   </thead>
 
   <tbody>
-    <% @unterprodukts.each do |unterprodukt| %>
+    <% @unterprodukt.each do |unterprodukt| %>
       <tr>
-        <td><%= unterprodukt.oberprodukt.name %></td>
-        <td><%= unterprodukt.unterprodukt.name %></td>
-        <td><%= unterprodukt.menge %></td>
+        <%#*<td><%= unterprodukt.oberprodukt.name %></td>%>
+        <%#*<td><%= unterprodukt.unterprodukt.name %></td>%>
+        <%#*<td><%= unterprodukt.menge %></td>%>
+        <td><%= unterprodukt.name %></td>
         <td><%= link_to 'Show', unterprodukt %></td>
         <td><%= link_to 'Edit', edit_unterprodukt_path(unterprodukt) %></td>
         <td><%= link_to 'Destroy', unterprodukt, method: :delete, data: { confirm: 'Are you sure?' } %></td>
