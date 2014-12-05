@@ -1,15 +1,16 @@
 Rails.application.routes.draw do
+  get 'unterprodukts/stuecklist'
+
   resources :unterprodukts
 
   resources :auftrags
 
   resources :kundes
 
-  
-  
   resources :produkts
 
   get 'search' => 'produkts#search'
+  
   
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

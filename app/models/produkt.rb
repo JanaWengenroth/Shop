@@ -14,10 +14,17 @@ class Produkt < ActiveRecord::Base
   
   has_many :oberprodukte, :class_name => 'Unterprodukt', :foreign_key => 'oberprodukt_id'
   has_many :unterprodukte, :class_name => 'Unterprodukt', :foreign_key => 'unterprodukt_id'
-  
+ 
+  protected
   def self.search(query)
     where("name LIKE (?)", "%#{query}%")
   end
+  
+  public
+  def self.get_oberprodukt()
+    where("kategorie = 'A'")
+  end
+ 
   
   has_attached_file :bild, :styles => { :small => "150x150>" },
  :url => "/assets/produkts/:id/:style/:basename.:extension",
@@ -27,4 +34,6 @@ class Produkt < ActiveRecord::Base
    validates_attachment_size :bild, :less_than => 5.megabytes
    validates_attachment_content_type :bild, :content_type => ['image/jpeg', 'image/png']
    has_attached_file :bild, :styles => { :medium => "150x150>", :thumb => "100x100>" }
+
+
 end
