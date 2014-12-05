@@ -23,11 +23,11 @@ class UnterproduktsController < ApplicationController
    
   
   def stuecklist
-    tmp[] = Produkt.get_oberprodukt()
-    
-    tmp.each do |obj|
-      obj.name
-    end
+#    tmp[] = Produkt.get_oberprodukt()
+#    
+#    tmp.each do |obj|
+#      obj.name
+#    end
     
   end
   

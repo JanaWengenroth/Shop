@@ -2,8 +2,8 @@
 
 <%
   
-  users = ["Alice", "Bob", "Eve", "Administrator"]
-  
+  #users = ["Alice", "Bob", "Eve", "Administrator"]
+  users = Kunde.all.map{|obj| obj.email}
  
 
   if (not params[:user_post].nil?) and users.include?(params[:user_post])
@@ -82,14 +82,14 @@
                     </li>
                     <li>
                         <h3>Navigation</h3>
+                        <%  if user.rolle == 1%>
                         <a href="/auftrags">Aufträge</a><br>
                         <a href="/kundes">Kunden</a><br>
                         <a href="/produkts">Produkte</a><br>
-<<<<<<< HEAD
-                        <a href="/unterprodukts">Produkte</a><br>
-=======
                         <a href="/unterprodukts/stuecklist">Stueckliste</a><br>
->>>>>>> e65b01a8eb695e8ee5c5443907b5fbc68aefebed
+                        <%  else%>
+                          <a href="/produkts">Produkte</a><br>
+                          <%   end %>
                     </li>
                 </ul>
             </div>
