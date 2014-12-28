@@ -1,6 +1,9 @@
 Rails.application.routes.draw do
+ 
   get 'unterprodukts/stuecklist'
 
+  get 'produkts/istwert'
+  
   resources :unterprodukts
 
   resources :auftrags
@@ -8,6 +11,9 @@ Rails.application.routes.draw do
   resources :kundes
 
   resources :produkts
+  
+  
+  
 
   get 'search' => 'produkts#search'
   

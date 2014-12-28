@@ -20,6 +20,12 @@ class ProduktsController < ApplicationController
   # GET /produkts/1/edit
   def edit
   end
+  
+   # GET /produkts/istWert
+  def istwert
+#    @produkt = Produkt.istWert
+#    render "istWert"
+  end
 
   # POST /produkts
   # POST /produkts.json
