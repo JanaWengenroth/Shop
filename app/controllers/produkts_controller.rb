@@ -23,8 +23,8 @@ class ProduktsController < ApplicationController
   
    # GET /produkts/istWert
   def istwert
-#    @produkt = Produkt.istWert
-#    render "istWert"
+    @produkt = Produkt.all
+    render "istwert"
   end
 
   # POST /produkts

@@ -1,1 +1,19 @@
 <h1>ist Wert</h1>
+
+ <table id="istwerttabelle">
+      <tr>
+          <th style="width:150px;"> Produkt </th>
+          <th style="width:150px;"> Monat </th>
+          <th style="width:150px;"> Menge </th>
+      </tr>
+    <% @produkt.each do |produkt| %>
+      <tr>
+          <td><%= produkt.name %></td>
+          <%  month = produkt.gueltigVon.strftime("%-m") %>
+          <td><%= month %></td>
+          <td><%= produkt.auftrags.count %></td>
+      </tr>
+           
+    <% end %>
+  </table>
+
