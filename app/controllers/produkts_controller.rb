@@ -21,11 +21,12 @@ class ProduktsController < ApplicationController
   def edit
   end
   
-   # GET /produkts/istWert
+   # GET /auftrags/istWert
   def istwert
     @produkt = Produkt.all
     render "istwert"
   end
+  
 
   # POST /produkts
   # POST /produkts.json

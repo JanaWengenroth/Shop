@@ -23,7 +23,7 @@ ActiveRecord::Schema.define(version: 20141228123855) do
   end
 
   create_table "auftrags_produkts", id: false, force: true do |t|
-    t.integer "autrags_id"
+    t.integer "auftrags_id"
     t.integer "produkts_id"
   end
 

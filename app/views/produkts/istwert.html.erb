@@ -1,19 +1,98 @@
+
 <h1>ist Wert</h1>
+
+
+<% def durchschnitt(menge, addiertemenge, divisor)
+      if(divisor == 3)
+        addiertemenge / divisor
+      else
+        addiertemenge1 = menge + addiertemenge
+        divisor1 = divisor + 1
+      end
+    end
+      
+%>
 
  <table id="istwerttabelle">
       <tr>
           <th style="width:150px;"> Produkt </th>
-          <th style="width:150px;"> Monat </th>
-          <th style="width:150px;"> Menge </th>
+          
+            <% array = [1,2,3,4,5,6,7,8,9,10,11,12] 
+               array.each do |month| %>
+          
+          <th style="width:150px;"><%= month %></th>
+            <% end %>
+          
       </tr>
     <% @produkt.each do |produkt| %>
       <tr>
           <td><%= produkt.name %></td>
-          <%  month = produkt.gueltigVon.strftime("%-m") %>
-          <td><%= month %></td>
-          <td><%= produkt.auftrags.count %></td>
+          
+          <% 
+             #produktID = produkt.id 
+             #monats_array = produkt.auftrags.map{|auftrag| auftrag.datum.strftime("%-m")}
+             #bli = monats_array.first 
+             #mo = bli.to_i - 1
+            
+             #sum = 0
+             #sisi = produkt.auftrags.map{|auftrag|  auftrag.stueckzahl }
+             #dudu = sisi.inject{ |sum, a| sum + a }
+             
+            def sum_of_stueckzahl(p_id, date)
+              Auftrag.where("produkt_id = #{p_id} AND datum Like '2014-#{date}-%'").sum :stueckzahl
+            end
+          
+            
+            
+            
+            def miau_(p_id, monat, accu)
+                      
+              if(monat.length == 0 or accu > 12)
+                return
+              elsif(monat.length == 1 and monat.first == accu)
+                stueckzahl = sum_of_stueckzahl(p_id, monat.first)
+                %>
+                  <td align="center"><%= stueckzahl %></td>
+                <%
+              elsif(monat.first.to_i == accu)
+                stueckzahl = sum_of_stueckzahl(p_id, monat.first)
+                %>
+                  <td align="center"><%= stueckzahl %></td>
+                <%
+                miau_(p_id, monat.rest, accu+1) 
+              elsif(accu <= 12) 
+                accu1 = accu +1
+                %>
+                  <td align="center">0</td>
+                <%
+
+                miau_(p_id, monat, accu1)
+              end
+            end
+           
+            def miau(p_id, monat)
+              miau_(p_id, monat, 1)
+            end
+           
+            produktID = produkt.id 
+            monats_array = produkt.auftrags.map{|auftrag| auftrag.datum.strftime("%-m")}
+             
+            # Array zu Set um dublikate zu entfernen und Set zu Array
+            sortiertes_array = monats_array.sort
+            set_array = sortiertes_array.to_set
+            array = set_array.to_a 
+             
+            miau(produktID.to_i, array)
+            
+            %>
+                 
+          
+          
       </tr>
            
     <% end %>
   </table>
 
+<%#*array.inject{|sum,x| sum + x }%>
+
+<%#*SELECT SUM(stueckzahl) FROM `auftrags` WHERE `produkt_id`= 4 AND datum LIKE "2014-11-%";%>

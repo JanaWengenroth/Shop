@@ -21,6 +21,8 @@ class AuftragsController < ApplicationController
   def edit
   end
 
+  
+  
   # POST /auftrags
   # POST /auftrags.json
   def create
