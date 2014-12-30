@@ -4,6 +4,8 @@ Rails.application.routes.draw do
 
   get 'produkts/istwert'
   
+  get 'auftrags/warenkorb'
+  
   resources :unterprodukts
 
   resources :auftrags
