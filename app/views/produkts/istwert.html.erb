@@ -17,15 +17,6 @@
           <td><%= produkt.name %></td>
           
           <% 
-             #produktID = produkt.id 
-             #monats_array = produkt.auftrags.map{|auftrag| auftrag.datum.strftime("%-m")}
-             #bli = monats_array.first 
-             #mo = bli.to_i - 1
-            
-             #sum = 0
-             #sisi = produkt.auftrags.map{|auftrag|  auftrag.stueckzahl }
-             #dudu = sisi.inject{ |sum, a| sum + a }
-             
             def sum_of_stueckzahl(p_id, date)
               Auftrag.where("produkt_id = #{p_id} AND datum Like '2014-#{date}-%'").sum :stueckzahl
             end
@@ -111,6 +102,7 @@
           
           <%
           #Berechnung des Vormonats
+          #monat: Monat als Integer
           def vormonat(monat)
             range = (1..12)
             if(range.include?(monat))              
@@ -124,6 +116,10 @@
          
           
           #Funktion zur Breechnung der Planungstabelle
+          #p_id: Produkt ID die zu dem jeweiligen Produkt gehört
+          #faktor: Glättungsfaktor muss zwischen 0.1 und 0.3 liegen
+          #monat: Monat als Integer zu dem eine Primärbedarfsanalyse 
+          #       durchgeführt werden soll
           def planungstabelle(p_id, faktor, monat)
             
             #letzter Monat
