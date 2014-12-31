@@ -6,6 +6,8 @@ Rails.application.routes.draw do
   
   get 'auftrags/warenkorb'
   
+  get 'produkts/adding_to_warenkorb'
+  
   resources :unterprodukts
 
   resources :auftrags

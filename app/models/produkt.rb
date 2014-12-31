@@ -45,14 +45,20 @@ class Produkt < ActiveRecord::Base
   
   public
   def self.get_auftrag(id)
-    where(:produkts_id => "%#{id}%")
+    where(:produkt_id => "%#{id}%")
   end
   
-  public
-  def self.sum_of_stueckzahl(p_id, date)
-    sum(:stueckzahl, :condition => ["produkt_id= ? AND datum LIKE (?)",
-                                    p_id, "%#{date}%"])
-  end
+  def self.produkt_aus_id(id) 
+      #SELECT * FROM `produkts` WHERE `id` = 1;
+      where( "`id` = ?" , id)
+           
+  end 
+  
+#  public
+#  def self.sum_of_stueckzahl(p_id, date)
+#    sum(:stueckzahl, :condition => ["produkt_id= ? AND datum LIKE (?)",
+#                                    p_id, "%#{date}%"])
+#  end
   
 
 #  def show_stuecklist()

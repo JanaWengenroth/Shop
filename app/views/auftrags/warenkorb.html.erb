@@ -1,2 +1,28 @@
 <br>
 <h1>Warenkorb</h1>
+
+
+<table>
+    <tr>
+     <th style="width:150px;">  </th>
+     <th style="width:150px;"> Produkt </th>
+     <th style="width:150px;"> Preis </th>
+      
+    </tr>
+    
+    
+    <% array = session[:warenkorb_produkt]
+    array.each do |id| %>
+    <tr>
+      <% 
+        produkte = Produkt.produkt_aus_id(id)
+        erstes_produkt = produkte.first
+      %>
+        
+      <td align="center"><%= image_tag erstes_produkt.bild.url(:medium) %></td>
+      <td align="center"><%= erstes_produkt.name %></td>
+      <td align="center"><%= erstes_produkt.preis %> Euro</td>
+      <%#*<td align="center"><%= text_field_tag(:anzahl, '', size: 10)%></td>
+    </tr>
+    <% end %>
+</table>

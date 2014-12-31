@@ -33,4 +33,5 @@
 <%= image_tag @produkt.bild.url(:medium) %>
 
 <%= link_to 'Edit', edit_produkt_path(@produkt) %> |
-<%= link_to 'Back', produkts_path %>
+<%= link_to 'Zurück', produkts_path %> |
+<%= link_to 'In den Warenkob', controller: "produkts", action: "adding_to_warenkorb", id: @produkt%>
