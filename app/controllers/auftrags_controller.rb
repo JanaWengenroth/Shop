@@ -1,5 +1,7 @@
 class AuftragsController < ApplicationController
   before_action :set_auftrag, only: [:show, :edit, :update, :destroy]
+  before_filter :warenkorb
+
 
   # GET /auftrags
   # GET /auftrags.json
@@ -21,6 +23,12 @@ class AuftragsController < ApplicationController
   def edit
   end
 
+  def warenkorb
+    @auftrags = session[:warenkorb_produkt]
+    
+  end
+  
+  
   # POST /auftrags
   # POST /auftrags.json
   def create

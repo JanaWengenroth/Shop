@@ -1,5 +1,6 @@
 class ProduktsController < ApplicationController
   before_action :set_produkt, only: [:show, :edit, :update, :destroy]
+  $array =  []
 
   # GET /produkts
   # GET /produkts.json
@@ -20,7 +21,22 @@ class ProduktsController < ApplicationController
   # GET /produkts/1/edit
   def edit
   end
-
+  
+   # GET /auftrags/istWert
+  def istwert
+    @produkt = Produkt.all
+    render "istwert"
+  end
+  
+  
+  def adding_to_warenkorb
+    @produkt = Produkt.find(params[:produkt_id]|| params[:id])
+    $array << @produkt.id
+    session[:warenkorb_produkt] = $array
+  end
+  
+  
+  
   # POST /produkts
   # POST /produkts.json
   def create

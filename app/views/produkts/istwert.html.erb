@@ -1,0 +1,161 @@
+<br>
+<h2>Ist-Wert</h2>
+
+ <table id="istwerttabelle">
+      <tr>
+          <th style="width:150px;"> Produkt </th>
+          
+            <% array = [1,2,3,4,5,6,7,8,9,10,11,12] 
+               array.each do |month| %>
+          
+          <th style="width:150px;"><%= month %></th>
+            <% end %>
+          
+      </tr>
+    <% @produkt.each do |produkt| %>
+      <tr>
+          <td><%= produkt.name %></td>
+          
+          <% 
+            def sum_of_stueckzahl(p_id, date)
+              Auftrag.where("produkt_id = #{p_id} AND datum Like '2014-#{date}-%'").sum :stueckzahl
+            end
+          
+            
+            
+            
+            def miau_(p_id, monat, accu)
+                      
+              if(monat.length == 0 or accu > 12)
+                return
+              elsif(monat.length == 1 and monat.first == accu)
+                stueckzahl = sum_of_stueckzahl(p_id, monat.first)
+                %>
+                  <td align="center"><%= stueckzahl %></td>
+                <%
+              elsif(monat.first.to_i == accu)
+                stueckzahl = sum_of_stueckzahl(p_id, monat.first)
+                %>
+                  <td align="center"><%= stueckzahl %></td>
+                <%
+                miau_(p_id, monat.rest, accu+1) 
+              elsif(accu <= 12) 
+                accu1 = accu +1
+                %>
+                  <td align="center">0</td>
+                <%
+
+                miau_(p_id, monat, accu1)
+              end
+            end
+           
+            def miau(p_id, monat)
+              miau_(p_id, monat, 1)
+            end
+           
+            produktID = produkt.id 
+            monats_array = produkt.auftrags.map{|auftrag| auftrag.datum.strftime("%-m")}
+             
+            # Array zu Set um dublikate zu entfernen und Set zu Array
+            sortiertes_array = monats_array.sort
+            set_array = sortiertes_array.to_set
+            array = set_array.to_a 
+             
+            miau(produktID.to_i, array)
+            
+            %>
+      </tr>
+           
+    <% end %>
+  </table>
+
+
+
+
+
+
+<br><br><br>
+
+
+
+
+
+
+<h2>Planwert</h2>
+
+<table id="planwerttabelle">
+    <tr>
+          <th style="width:150px;"> Produkt </th>
+          
+            <% array = [1,2,3,4,5,6,7,8,9,10,11,12] 
+               array.each do |month| %>
+          
+          <th style="width:150px;"><%= month %></th>
+            <% end %>
+          
+      </tr>
+      
+      <% @produkt.each do |produkt| %>
+      <tr>
+          <td><%= produkt.name %></td>
+          
+          
+          <%
+          #Berechnung des Vormonats
+          #monat: Monat als Integer
+          def vormonat(monat)
+            range = (1..12)
+            if(range.include?(monat))              
+              if (monat == 1)
+                12
+              else
+                monat-1
+              end
+            end
+          end
+         
+          
+          #Funktion zur Breechnung der Planungstabelle
+          #p_id: Produkt ID die zu dem jeweiligen Produkt gehört
+          #faktor: Glättungsfaktor muss zwischen 0.1 und 0.3 liegen
+          #monat: Monat als Integer zu dem eine Primärbedarfsanalyse 
+          #       durchgeführt werden soll
+          def planungstabelle(p_id, faktor, monat)
+            
+            #letzter Monat
+            dritter_monat = vormonat(monat)
+            #vorletzter Monat
+            zweiter_monat = vormonat(dritter_monat)
+            #vorvorletzter Monat
+            erster_monat = vormonat(zweiter_monat)
+            
+            stueckzahl_dritter_monat = sum_of_stueckzahl(p_id, dritter_monat)
+            stueckzahl_zweiter_monat = sum_of_stueckzahl(p_id, zweiter_monat)
+            stueckzahl_erster_monat = sum_of_stueckzahl(p_id, erster_monat)
+            
+            durchschnitt = (stueckzahl_dritter_monat + stueckzahl_zweiter_monat + stueckzahl_erster_monat)/3.to_f
+            
+            exponentielle_glaettung = durchschnitt + faktor*(stueckzahl_dritter_monat - durchschnitt)
+            %>
+                <td align="center"><%= exponentielle_glaettung.round(2) %></td>
+            <%
+            
+          end
+          
+          %>
+          
+          
+          
+          
+          <% a = [1,2,3,4,5,6,7,8,9,10,11,12] 
+             a.each do |zahl| 
+               
+             produkt_id = produkt.id  
+             
+             planungstabelle(produkt_id, 0.2, zahl)
+          %>
+            
+          <% end %>
+      </tr>
+      <% end %>
+</table>

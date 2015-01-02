@@ -4,7 +4,7 @@ class UnterproduktsController < ApplicationController
   # GET /unterprodukts
   # GET /unterprodukts.json
   def index
-    @unterprodukt = Unterprodukt.all
+    @unterprodukts = Unterprodukt.all
   end
 
   # GET /unterprodukts/1
@@ -24,9 +24,7 @@ class UnterproduktsController < ApplicationController
   
   def stuecklist
     @unterprodukt = Produkt.get_oberprodukt()
-#   
-    render "index"
-    
+    render "stuecklist"
   end
   
   

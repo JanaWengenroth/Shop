@@ -5,11 +5,8 @@
     <tr>
       <th>Bild</th>
       <th>Name</th>
-      <%#*<th>Kategorie</th>%>
       <th>Beschreibung</th>
       <th>Preis</th>
-      <%#*<th>Gueltigvon</th>%>
-      <%#*<th>Gueltigbis</th>%>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -17,16 +14,13 @@
   <tbody>
     <% @produkts.each do |produkt| %>
       <tr>
-        <td> <%= image_tag produkt.bild.url(:medium) %></td>
+        <td><%= image_tag produkt.bild.url(:medium) %></td>
         <td><%= produkt.name %></td>
-        <%#*<td><%= produkt.kategorie %></td>
         <td><%= produkt.beschreibung %></td>
         <td><%= produkt.preis %></td>
-        <%#*<td><%= produkt.gueltigVon %></td>
-        <%#*<td><%= produkt.gueltigBis %></td>
-        <%#*<td><%= link_to 'Show', produkt %></td>
-        <%#*<td><%= link_to 'Edit', edit_produkt_path(produkt) %></td>
-        <%#*<td><%= link_to 'Destroy', produkt, method: :delete, data: { confirm: 'Are you sure?' } %></td>%>
+        <td><%= link_to 'Show', produkt %></td>
+        <td><%= link_to 'Edit', edit_produkt_path(produkt) %></td>
+        <td><%= link_to 'Destroy', produkt, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>

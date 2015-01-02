@@ -1,6 +1,13 @@
 Rails.application.routes.draw do
+ 
   get 'unterprodukts/stuecklist'
 
+  get 'produkts/istwert'
+  
+  get 'auftrags/warenkorb'
+  
+  get 'produkts/adding_to_warenkorb'
+  
   resources :unterprodukts
 
   resources :auftrags
@@ -8,6 +15,9 @@ Rails.application.routes.draw do
   resources :kundes
 
   resources :produkts
+  
+  
+  
 
   get 'search' => 'produkts#search'
   

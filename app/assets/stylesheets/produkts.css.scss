@@ -21,3 +21,52 @@
 #product-list tr:nth-child(2n+1) {
     background-color: #f0f0f0;
 }
+
+
+
+
+
+table#istwerttabelle {    
+    width: 900px;
+    padding: 0;
+    margin: 0;
+}
+
+table#istwerttabelle th {
+    background-color: #ffddbb;
+    text-align: left;   
+    padding: 4px; 
+}
+
+table#istwerttabelle td {
+    padding: 4px;
+}
+
+table#istwerttabelle tr:nth-child(2n+1) {
+    background-color: #f0f0f0;
+}
+
+    
+    
+
+
+
+table#planwerttabelle {    
+    width: 900px;
+    padding: 0;
+    margin: 0;
+}
+
+table#planwerttabelle th {
+    background-color: #ffddbb;
+    text-align: left;   
+    padding: 4px; 
+}
+
+table#planwerttabelle td {
+    padding: 4px;
+}
+
+table#planwerttabelle tr:nth-child(2n+1) {
+    background-color: #f0f0f0;
+}
