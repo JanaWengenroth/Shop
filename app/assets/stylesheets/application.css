@@ -93,6 +93,12 @@ a:hover {
 #sidebar li {
     list-style-type: none;
 }
+
+#sidebar li a{
+    color: purple;
+    font-weight:bold
+}
+
 #sidebar ul.links li {
     margin-bottom: 5px;
 }
