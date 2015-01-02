@@ -23,13 +23,10 @@ ActiveRecord::Schema.define(version: 20150102175301) do
 
   create_table "auftrags", force: true do |t|
     t.date     "datum"
-    t.integer  "stueckzahl"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "produkt_id"
     t.integer  "kunden_id"
   end
-
 
   create_table "kundes", force: true do |t|
     t.string   "vorname"

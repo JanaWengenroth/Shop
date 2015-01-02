@@ -26,9 +26,10 @@ end
 
 class Produkt < ActiveRecord::Base
 
-  has_and_belongs_to_many :auftrags
-#  has_many:auftrag
-  has_many:kunde, :through => :auftrag
+  has_many :auftrag_fuer_produkts
+  has_many :auftrags, through: :auftrag_fuer_produkts
+
+  has_many:kunde, :through => :auftrags
   
   has_many :oberprodukte, :class_name => 'Unterprodukt', :foreign_key => 'oberprodukt_id'
   has_many :unterprodukte, :class_name => 'Unterprodukt', :foreign_key => 'unterprodukt_id'

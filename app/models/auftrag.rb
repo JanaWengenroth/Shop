@@ -1,8 +1,8 @@
 class Auftrag < ActiveRecord::Base
 
-has_and_belongs_to_many :produkts
-#belongs_to:produkt
-belongs_to:kunde
+  has_many :auftrag_fuer_produkts
+  has_many :produkts, through: :auftrag_fuer_produkts
+  belongs_to:kunde
 
   
 end
