@@ -17,6 +17,7 @@
           <td><%= produkt.name %></td>
           
           <% 
+#TODO korrigieren
             def sum_of_stueckzahl(p_id, date)
               Auftrag.where("produkt_id = #{p_id} AND datum Like '2014-#{date}-%'").sum :stueckzahl
             end
@@ -54,6 +55,7 @@
             end
            
             produktID = produkt.id 
+#TODO korrigieren
             monats_array = produkt.auftrags.map{|auftrag| auftrag.datum.strftime("%-m")}
              
             # Array zu Set um dublikate zu entfernen und Set zu Array
