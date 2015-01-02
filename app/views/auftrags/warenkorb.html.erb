@@ -2,6 +2,16 @@
 <h1>Warenkorb</h1>
 
 
+    <% array = session[:warenkorb_produkt]
+    if array.empty?
+      %>
+    <p>In ihrem Warenkorb befinden sich noch keine Artikel</p>
+    <a href="/produkts" style="font-weight:bold; color:purple">Zu den Produkten</a><br>
+    
+    <%
+    else
+    %>
+    
 <table>
     <tr>
      <th style="width:150px;">  </th>
@@ -10,19 +20,44 @@
       
     </tr>
     
-    
-    <% array = session[:warenkorb_produkt]
+    <%
     array.each do |id| %>
     <tr>
       <% 
+       if $summe.nil?
+         $summe = 0
+       end
+     
         produkte = Produkt.produkt_aus_id(id)
         erstes_produkt = produkte.first
+       
+      
+        $summe += erstes_produkt.preis
       %>
         
       <td align="center"><%= image_tag erstes_produkt.bild.url(:medium) %></td>
       <td align="center"><%= erstes_produkt.name %></td>
+      
       <td align="center"><%= erstes_produkt.preis %> Euro</td>
+      
       <%#*<td align="center"><%= text_field_tag(:anzahl, '', size: 10)%></td>
     </tr>
     <% end %>
+    
 </table>
+
+
+<h3 style="position:absolute; left:722px">Summe</h3>
+<br><br><br>
+<table id="summe" style="position:absolute; left:710px" border="1">
+  <tr>
+     <th style="width:80px;" align="center"><%= $summe %> Euro</th>
+      
+    </tr>
+    
+    <% 
+      $summe = 0
+    %>
+</table>
+<% end %>
+<br><br><br>

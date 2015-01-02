@@ -1,7 +1,7 @@
 class AuftragsController < ApplicationController
   before_action :set_auftrag, only: [:show, :edit, :update, :destroy]
   before_filter :warenkorb
-
+  $array =  []
 
   # GET /auftrags
   # GET /auftrags.json
@@ -24,8 +24,7 @@ class AuftragsController < ApplicationController
   end
 
   def warenkorb
-    @auftrags = session[:warenkorb_produkt]
-    
+    session[:warenkorb_produkt] = $array
   end
   
   

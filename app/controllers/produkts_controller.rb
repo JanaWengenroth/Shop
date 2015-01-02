@@ -35,7 +35,7 @@ class ProduktsController < ApplicationController
     session[:warenkorb_produkt] = $array
   end
   
-  
+ 
   
   # POST /produkts
   # POST /produkts.json
