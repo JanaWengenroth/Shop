@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  auftrag_id: 1
+  produkt_id: 1
+  stueckzahl: 1
+
+two:
+  auftrag_id: 1
+  produkt_id: 1
+  stueckzahl: 1

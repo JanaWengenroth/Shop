@@ -5,6 +5,8 @@ class CreateAuftrags < ActiveRecord::Migration
       t.integer :stueckzahl
 
       t.timestamps
+      
+    
     end
   end
 end

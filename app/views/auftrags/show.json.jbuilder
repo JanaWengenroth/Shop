@@ -1,1 +1,1 @@
-json.extract! @auftrag, :id, :datum, :stueckzahl, :created_at, :updated_at
+json.extract! @auftrag, :id, :datum, :created_at, :updated_at

@@ -17,9 +17,18 @@
           <td><%= produkt.name %></td>
           
           <% 
+#TODO korrigieren
             def sum_of_stueckzahl(p_id, date)
-              Auftrag.where("produkt_id = #{p_id} AND datum Like '2014-#{date}-%'").sum :stueckzahl
+              auftraege = Auftrag.where("datum Like '2014-#{date}-%'")
+              
+              auftrags_id_array = []
+              auftraege.each{|elem| auftrags_id_array << elem.id}
+              AuftragFuerProdukt.where("auftrag_id IN (?) AND produkt_id = ?", auftrags_id_array, p_id ).sum :stueckzahl
+              #SELECT id FROM `auftrags` WHERE datum LIKE "2014-11-%";
+              #SELECT SUM(stueckzahl) FROM `auftrag_fuer_produkts` WHERE auftrag_id IN ##auftrags_id_array AND produkt_id= ##p_id;
+              
             end
+          
           
             
             
@@ -54,7 +63,8 @@
             end
            
             produktID = produkt.id 
-            monats_array = produkt.auftrags.map{|auftrag| auftrag.datum.strftime("%-m")}
+            monats_array = produkt.auftrags.map{|auftrag|  auftrag.datum.strftime("%-m")}
+            
              
             # Array zu Set um dublikate zu entfernen und Set zu Array
             sortiertes_array = monats_array.sort
@@ -119,7 +129,7 @@
           #p_id: Produkt ID die zu dem jeweiligen Produkt gehört
           #faktor: Glättungsfaktor muss zwischen 0.1 und 0.3 liegen
           #monat: Monat als Integer zu dem eine Primärbedarfsanalyse 
-          #       durchgeführt werden soll
+                 #durchgeführt werden soll
           def planungstabelle(p_id, faktor, monat)
             
             #letzter Monat
