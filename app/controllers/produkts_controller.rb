@@ -35,7 +35,19 @@ class ProduktsController < ApplicationController
     session[:warenkorb_produkt] = $array
   end
   
- 
+  def delete_from_warenkorb
+     @produkt = Produkt.find(params[:produkt_id]|| params[:id])
+    
+#    index = $array.index{|x| x == @produkt.id}
+    index = $array.index(@produkt.id)
+    
+#    if(!index.nil?)
+#     $array.delete_at(index)
+#    end
+    $array.delete_at(index)
+#      $array << @produkt.id
+     session[:warenkorb_produkt] = $array
+  end
   
   # POST /produkts
   # POST /produkts.json

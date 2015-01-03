@@ -21,6 +21,7 @@
     </tr>
     
     <%
+    $id
     array.each do |id| %>
     <tr>
       <% 
@@ -39,6 +40,9 @@
       <td align="center"><%= erstes_produkt.name %></td>
       
       <td align="center"><%= erstes_produkt.preis %> Euro</td>
+      <% $id = id %>
+      <td align="center"><%= link_to 'Aus dem Warenkorb löschen', controller: "produkts", action: "delete_from_warenkorb", id: $id%></td>
+
       
       <%#*<td align="center"><%= text_field_tag(:anzahl, '', size: 10)%></td>
     </tr>
@@ -54,7 +58,7 @@
      <th style="width:80px;" align="center"><%= $summe %> Euro</th>
       
     </tr>
-    
+  
     <% 
       $summe = 0
     %>

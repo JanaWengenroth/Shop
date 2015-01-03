@@ -8,6 +8,8 @@ Rails.application.routes.draw do
   
   get 'produkts/adding_to_warenkorb'
   
+  get 'produkts/delete_from_warenkorb'
+  
   resources :unterprodukts
 
   resources :auftrags
