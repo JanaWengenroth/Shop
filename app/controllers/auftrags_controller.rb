@@ -67,6 +67,21 @@ class AuftragsController < ApplicationController
       format.json { head :no_content }
     end
   end
+  
+    def bestellung_abschicken
+#     @produkt = Produkt.find(params[:produkt_id]|| params[:id])
+#    
+##    index = $array.index{|x| x == @produkt.id}
+#    index = $array.index(@produkt.id)
+#    
+##    if(!index.nil?)
+##     $array.delete_at(index)
+##    end
+#    $array.delete_at(index)
+##      $array << @produkt.id
+     $array = []
+     session[:warenkorb_produkt] = $array
+  end
 
   private
     # Use callbacks to share common setup or constraints between actions.
@@ -78,4 +93,7 @@ class AuftragsController < ApplicationController
     def auftrag_params
       params.require(:auftrag).permit(:datum, :stueckzahl,:kunden_id, :produkt_id)
     end
+    
+      
+
 end

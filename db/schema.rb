@@ -13,7 +13,6 @@
 
 ActiveRecord::Schema.define(version: 20150102175301) do
 
-
   create_table "auftrag_fuer_produkts", force: true do |t|
     t.integer  "auftrag_id"
     t.integer  "produkt_id"
@@ -21,7 +20,6 @@ ActiveRecord::Schema.define(version: 20150102175301) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
-EAD
 
   create_table "auftrags", force: true do |t|
     t.date     "datum"

@@ -10,6 +10,8 @@ Rails.application.routes.draw do
   
   get 'produkts/delete_from_warenkorb'
   
+  get 'auftrags/bestellung_abschicken'
+  
   resources :unterprodukts
 
   resources :auftrags
