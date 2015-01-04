@@ -2,39 +2,6 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group>
-            <file>file:/D:/Shop/app/controllers/kundes_controller.rb</file>
-            <file>file:/D:/Shop/app/views/unterprodukts/index.html.erb</file>
-            <file>file:/D:/Shop/app/views/auftrags/show.html.erb</file>
-            <file>file:/D:/Shop/app/views/auftrags/edit.html.erb</file>
-            <file>file:/D:/Shop/app/views/unterprodukts/new.html.erb</file>
-            <file>file:/D:/Shop/db/migrate/20141113093826_create_produkts.rb</file>
-            <file>file:/D:/Shop/app/views/unterprodukts/edit.html.erb</file>
-            <file>file:/D:/Shop/db/migrate/20141203222448_create_unterprodukts.rb</file>
-            <file>file:/D:/Shop/app/views/kundes/index.html.erb</file>
-            <file>file:/D:/Shop/db/migrate/20141203194658_add_kunden_id_to_auftrag.rb</file>
-            <file>file:/D:/Shop/app/models/unterprodukt.rb</file>
-            <file>file:/D:/Shop/app/views/unterprodukts/stuecklist.html.erb</file>
-            <file>file:/D:/Shop/config/initializers/filter_parameter_logging.rb</file>
-            <file>file:/D:/Shop/config/initializers/cookies_serializer.rb</file>
-            <file>file:/D:/Shop/app/views/layouts/application.html.erb</file>
-            <file>file:/D:/Shop/db/migrate/20141203194603_add_produkt_id_to_auftrag.rb</file>
-            <file>file:/D:/Shop/app/controllers/application_controller.rb</file>
-            <file>file:/D:/Shop/app/views/auftrags/index.html.erb</file>
-            <file>file:/D:/Shop/app/views/kundes/show.html.erb</file>
-            <file>file:/D:/Shop/app/controllers/auftrags_controller.rb</file>
-            <file>file:/D:/Shop/app/views/kundes/new.html.erb</file>
-            <file>file:/D:/Shop/app/views/kundes/_form.html.erb</file>
-            <file>file:/D:/Shop/app/models/produkt.rb</file>
-            <file>file:/D:/Shop/config/initializers/session_store.rb</file>
-            <file>file:/D:/Shop/app/models/kunde.rb</file>
-            <file>file:/D:/Shop/app/views/kundes/edit.html.erb</file>
-            <file>file:/D:/Shop/app/models/auftrag.rb</file>
-            <file>file:/D:/Shop/app/views/auftrags/new.html.erb</file>
-            <file>file:/D:/Shop/app/views/unterprodukts/show.html.erb</file>
-            <file>file:/D:/Shop/app/controllers/unterprodukts_controller.rb</file>
-            <file>file:/D:/Shop/app/views/auftrags/_form.html.erb</file>
-            <file>file:/D:/Shop/app/views/unterprodukts/_form.html.erb</file>
-        </group>
+        <group/>
     </open-files>
 </project-private>
