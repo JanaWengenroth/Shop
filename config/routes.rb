@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
  
+  #Routes in Webside
+  
   get 'unterprodukts/stuecklist'
 
   get 'produkts/istwert'
@@ -12,6 +14,11 @@ Rails.application.routes.draw do
   
   get 'auftrags/bestellung_abschicken'
   
+  get 'assoziationsanalyse/index'
+  
+  
+  #Controller
+  
   resources :unterprodukts
 
   resources :auftrags
@@ -19,6 +26,8 @@ Rails.application.routes.draw do
   resources :kundes
 
   resources :produkts
+  
+  resources :assoziationsanalyse
   
   
   

@@ -1,0 +1,2 @@
+module AssoziationsanalyseHelper
+end

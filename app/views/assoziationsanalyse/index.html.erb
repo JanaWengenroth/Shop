@@ -1,0 +1,44 @@
+<br>
+<h2 style="font-weight:bold; color:plum"> Assoziationsanalyse </h2>
+
+
+<table>
+    <tr>
+        <th style="width:150px; height:25px" align="left">Transaktionen</th>
+        <th style="width:150px; height:25px" align="left">Produkte</th>
+     
+    </tr>
+        
+  <% @auftrags.each do |auftrag| %>
+    <tr>
+        
+        <td align="left"><%= auftrag.id %></td>
+      <% 
+        produkt_ids = AuftragFuerProdukt.where("auftrag_id = #{auftrag.id}").select :produkt_id 
+        
+        #auftrag_id = AuftragFuerProdukt.where("produkt_id = #{produkt_ids.name}")
+        if !produkt_ids.empty?
+          array1 = []
+            produkt_ids.each{|elem1| array1 << elem1.produkt_id}
+         %>
+        <td align="left"><%= array1%></td>
+        <%
+        else 
+        %>
+          <td align="left">-</td>
+        <%
+        end
+        #a = auftrag_id.auftrag_id
+        #mix = AuftragFuerProdukt.where("produkt_id != #{produkt.id} AND auftrag_id = #{2}")
+        
+      %>
+       
+    </tr>
+   <% end %>
+      
+        
+</table>
+
+
+ 
+   
