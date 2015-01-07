@@ -85,7 +85,7 @@
                         <h3>Navigation</h3>
                         <%  if Kunde.where(:email => session[:user_session]).first.rolle == 1%>
                         <a href="/produkts" style="font-weight:bold; color:purple">Produkte</a><br>
-                        <%= link_to 'Warenkorb', color: "red", controller: "auftrags", action: "warenkorb"%><br>
+                        <%= link_to 'Warenkorb', controller: "auftrags", action: "warenkorb"%><br>
                         <br>
                         <a href="/auftrags" style="color:purple">Aufträge</a><br>
                         <a href="/kundes" style="color:purple">Kunden</a><br>
@@ -94,7 +94,7 @@
                         <a href="/assoziationsanalyse/index" style="color:purple">Assoziationsanalyse</a><br>
                         <%  else%>
                           <a href="/produkts" style="font-weight:bold; color:purple">Produkte</a><br>
-                          <%= link_to 'Warenkorb', color: "red", controller: "auftrags", action: "warenkorb"%><br>
+                          <%= link_to 'Warenkorb', controller: "auftrags", action: "warenkorb"%><br>
                           <% end %>
                     </li>
                 </ul>
