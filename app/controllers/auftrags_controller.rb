@@ -69,19 +69,26 @@ class AuftragsController < ApplicationController
   end
   
     def bestellung_abschicken
-#     @produkt = Produkt.find(params[:produkt_id]|| params[:id])
-#    
-##    index = $array.index{|x| x == @produkt.id}
-#    index = $array.index(@produkt.id)
-#    
-##    if(!index.nil?)
-##     $array.delete_at(index)
-##    end
-#    $array.delete_at(index)
-##      $array << @produkt.id
+      
+      datum = Time.now.strftime("%Y-%m-%d")
+      produkte = $array
+      kunden_id = Kunde.where(:email => session[:user_session]).first.id
+      Auftrag.create(datum: datum, kunden_id: kunden_id)
+      
+      auftrag = Auftrag.where("datum ='#{datum}' and kunden_id =#{kunden_id}")
+      auftrag_id = auftrag.first.id
+ 
+      while (!produkte.empty?)
+        a = produkte.first
+        accu = produkte.count(a)
+        AuftragFuerProdukt.create(auftrag_id: auftrag_id, produkt_id: a , stueckzahl: accu)
+        produkte.delete(a)
+        
+      end
+      
      $array = []
      session[:warenkorb_produkt] = $array
-  end
+    end
 
   private
     # Use callbacks to share common setup or constraints between actions.
