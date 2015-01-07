@@ -14,14 +14,24 @@
         
         <td align="left"><%= auftrag.id %></td>
       <% 
+      $global_array 
         produkt_ids = AuftragFuerProdukt.where("auftrag_id = #{auftrag.id}").select :produkt_id 
         
         #auftrag_id = AuftragFuerProdukt.where("produkt_id = #{produkt_ids.name}")
         if !produkt_ids.empty?
           array1 = []
             produkt_ids.each{|elem1| array1 << elem1.produkt_id}
+            array_set = array1.to_set
+            array = array_set.to_a
+            
+            while(array.length > 1)
+              a = array.first
+              array.delete(a)
+              array.each {|elem|  $global_array << [elem, a].sort}
+            end
+        
          %>
-        <td align="left"><%= array1%></td>
+        <td align="left"><%= $global_array%></td>
         <%
         else 
         %>
@@ -34,7 +44,49 @@
       %>
        
     </tr>
-   <% end %>
+   <% end 
+   $global_assoziation_hash = {}
+   $global_anzahlhash = {}
+   
+   while (!$global_array.empty?)
+        a = $global_array.first
+        accu = $global_array.count(a)
+        $global_assoziation_hash.store(a, accu)
+        $global_array.delete(a)
+   end
+  
+  @produkts.each do |produkt|
+      p_id = produkt.id
+      anzahl = AuftragFuerProdukt.where("produkt_id = #{p_id}").count 
+      $global_anzahlhash.store(p_id, anzahl)
+  end
+
+  anzahl_auftraege = Auftrag.count
+  $global_assoziation_hash.each do |key, value|
+    
+    if value >= 2
+      
+      vorkommen1 = $global_anzahlhash.values_at(key.first)
+      vorkommen2 = $global_anzahlhash.values_at(key.last)
+      
+      konfidenz1 = ((value.to_f/anzahl_auftraege.to_f)/(vorkommen1.first.to_f/anzahl_auftraege.to_f))*100
+      konfidenz2 = ((value.to_f/anzahl_auftraege.to_f)/(vorkommen2.first.to_f/anzahl_auftraege.to_f))*100
+      
+     %>
+    <h3> konfidenz1 <%= konfidenz1 %></h3>
+    <h3> konfidenz2 <%= konfidenz2 %></h3>
+  <%  
+    
+    end
+  end
+ 
+  %>
+    <h3><%= $global_assoziation_hash %></h3>
+    <h3><%= $global_anzahlhash %></h3>
+    <h3><%= anzahl_auftraege %></h3>+
+    
+  <%  
+  $global_array = [] %>
       
         
 </table>
