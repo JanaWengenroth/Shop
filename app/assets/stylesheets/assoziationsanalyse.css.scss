@@ -1,3 +1,23 @@
 // Place all the styles related to the assoziationsanalyse controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+table#assoziationsanalyse {    
+    width: 900px;
+    padding: 0;
+    margin: 0;
+}
+
+table#assoziationsanalyse th {
+    background-color: rosybrown;
+    text-align: left;   
+    padding: 4px; 
+}
+
+table#assoziationsanalyse td {
+    padding: 4px;
+}
+
+table#assoziationsanalyse tr:nth-child(2n+1) {
+    background-color: #f0f0f0;
+}
