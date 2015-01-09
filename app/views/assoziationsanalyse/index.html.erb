@@ -29,7 +29,7 @@
         
 <% 
       #Globale Variablen
-      $global_array 
+      $global_array = []
       $global_assoziation_hash = {}
       $global_anzahlhash = {}
       
@@ -41,7 +41,7 @@
             produkt_ids.each{|elem1| array1 << elem1.produkt_id}
             array_set = array1.to_set
             array = array_set.to_a
-            
+
             while(array.length > 1)
               a = array.first
               array.delete(a)

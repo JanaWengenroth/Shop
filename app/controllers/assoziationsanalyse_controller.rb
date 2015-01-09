@@ -11,4 +11,6 @@ class AssoziationsanalyseController < ApplicationController
   def assoziation
      render "index"
   end
+  
+
 end
