@@ -24,24 +24,27 @@
      
     </tr>
         
+    <%
+   #Globale Variablen
+      $global_array = []
+      $global_assoziation_hash = {}
+      $global_anzahlhash = {}  
+  %>
   <% @auftrags.each do |auftrag| %>
    
         
 <% 
-      #Globale Variablen
-      $global_array 
-      $global_assoziation_hash = {}
-      $global_anzahlhash = {}
+     
       
       #Assoziationen der Produkte aus auftraegen erstellen
+
         produkt_ids = AuftragFuerProdukt.where("auftrag_id = #{auftrag.id}").select :produkt_id 
-        
         if !produkt_ids.empty?
           array1 = []
             produkt_ids.each{|elem1| array1 << elem1.produkt_id}
             array_set = array1.to_set
             array = array_set.to_a
-            
+
             while(array.length > 1)
               a = array.first
               array.delete(a)
@@ -49,7 +52,9 @@
             end
         end
       end 
-   
+ 
+
+
     #Assoziationshash erstellen
    while (!$global_array.empty?)
         a = $global_array.first
@@ -57,6 +62,9 @@
         $global_assoziation_hash.store(a, accu)
         $global_array.delete(a)
    end
+
+
+
   
     
     

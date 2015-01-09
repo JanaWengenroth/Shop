@@ -3,12 +3,21 @@ class AssoziationsanalyseController < ApplicationController
   def index
     @auftrags = Auftrag.all
     @produkts = Produkt.all
-    @konfidenz = params[:konfidenz]
-    @support = params[:support]
   end
   
   
-  def assoziation
+#  def assoziation
+#     @konfidenz = params[:konfidenz]
+#     @support = params[:support]
+#     render "index"
+#  end
+ 
+  
+  def show
+     @auftrags = Auftrag.all
+     @produkts = Produkt.all
+     @konfidenz = params[:konfidenz]
+     @support = params[:support]
      render "index"
   end
 end
