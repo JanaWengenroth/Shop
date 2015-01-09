@@ -20,4 +20,6 @@ class AssoziationsanalyseController < ApplicationController
      @support = params[:support]
      render "index"
   end
+  
+
 end
