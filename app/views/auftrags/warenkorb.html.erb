@@ -1,5 +1,5 @@
 <br>
-<h1 style="font-weight:bold; color:plum">Warenkorb</h1>
+<h2 style="font-weight:bold; color:purple">Warenkorb</h2>
 
 
     <% array = session[:warenkorb_produkt]
@@ -12,7 +12,7 @@
     else
     %>
     
-<table>
+<table id="warenkorb">
     <tr>
      <th style="width:150px;">  </th>
      <th style="width:150px;"> Produkt </th>
@@ -50,9 +50,9 @@
     
 </table>
 
-<h3 style="position:absolute; left:722px">Summe</h3>
+<h3 style="position:absolute;">Summe</h3>
 <br><br><br>
-<table id="summe" style="position:absolute; left:710px" border="1">
+<table id="summe" style="position:absolute;" border="1">
   <tr>
      <th style="width:80px;" align="center"><%= $summe %> Euro</th>
       
@@ -63,9 +63,9 @@
     %>
 </table>
 <br><br><br>
-<h3 style="position:absolute; left:722px"><%= link_to 'Bestellung abschicken', controller: "auftrags", action: "bestellung_abschicken", id: $id%></h3>
+<h3 style="position:absolute;"><%= link_to 'Bestellung abschicken', controller: "auftrags", action: "bestellung_abschicken", id: $id%></h3>
 
-<table id="summe" style="position:absolute; left:0px" border="1">
+<table id="summe" style="position:absolute;" border="1">
 
 <% end %>
 <br><br><br>

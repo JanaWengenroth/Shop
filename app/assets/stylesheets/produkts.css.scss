@@ -9,7 +9,7 @@
 }
 
 #product-list th {
-    background-color: #ffddbb;
+    background-color: rosybrown;
     text-align: left;   
     padding: 4px; 
 }
@@ -25,6 +25,22 @@
 
 
 
+table#produktliste {
+    width: 900px;
+    padding: 0;
+    margin: 0;
+}
+
+table#produktliste th {
+    background-color: rosybrown;
+    text-align: left;   
+    padding: 4px; 
+}
+
+
+
+
+
 
 table#istwerttabelle {    
     width: 900px;
@@ -33,7 +49,7 @@ table#istwerttabelle {
 }
 
 table#istwerttabelle th {
-    background-color: #ffddbb;
+    background-color: rosybrown;
     text-align: left;   
     padding: 4px; 
 }
@@ -58,7 +74,7 @@ table#planwerttabelle {
 }
 
 table#planwerttabelle th {
-    background-color: #ffddbb;
+    background-color: rosybrown;
     text-align: left;   
     padding: 4px; 
 }

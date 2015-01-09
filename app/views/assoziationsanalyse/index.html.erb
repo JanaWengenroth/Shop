@@ -1,40 +1,105 @@
 <br>
-<h2 style="font-weight:bold; color:plum"> Assoziationsanalyse </h2>
+<h2 style="font-weight:bold; color:purple"> Assoziationsanalyse </h2>
+
+<br><br><br><br>
+
+<%= form_tag('assoziation', method: "get") do %>
+<span style="font-weight:bold; color:purple">Support    </span>
+<%= text_field_tag(:support, '', size: 10)%> 
+<span>Geben sie eine ganze Zahl ab 0 ein </span><br>
+<span style="font-weight:bold; color:purple">Konfidenz</span>
+<%= text_field_tag(:konfidenz, '', size: 10)%>  
+<span>Geben sie eine Prozentzahl von 0 bis 100 ein </span><br><br>
+<%= submit_tag("Berechnen") %>
+<% end %>
+
+<br><br><br>
 
 
-<table>
+<table id="assoziationsanalyse">
     <tr>
-        <th style="width:150px; height:25px" align="left">Transaktionen</th>
-        <th style="width:150px; height:25px" align="left">Produkte</th>
+        <th style="width:150px; height:25px" align="left">Assoziation (Produkt-ids)</th>
+        <th style="width:150px; height:25px" align="left">Support</th>
+        <th style="width:150px; height:25px" align="left">Konfidenz</th>
      
     </tr>
         
   <% @auftrags.each do |auftrag| %>
-    <tr>
+   
         
-        <td align="left"><%= auftrag.id %></td>
-      <% 
+<% 
+      #Globale Variablen
+      $global_array 
+      $global_assoziation_hash = {}
+      $global_anzahlhash = {}
+      
+      #Assoziationen der Produkte aus auftraegen erstellen
         produkt_ids = AuftragFuerProdukt.where("auftrag_id = #{auftrag.id}").select :produkt_id 
         
-        #auftrag_id = AuftragFuerProdukt.where("produkt_id = #{produkt_ids.name}")
         if !produkt_ids.empty?
           array1 = []
             produkt_ids.each{|elem1| array1 << elem1.produkt_id}
-         %>
-        <td align="left"><%= array1%></td>
-        <%
-        else 
-        %>
-          <td align="left">-</td>
-        <%
+            array_set = array1.to_set
+            array = array_set.to_a
+            
+            while(array.length > 1)
+              a = array.first
+              array.delete(a)
+              array.each {|elem|  $global_array << [elem, a].sort ; $global_array << [elem, a].sort{|a,b| b <=> a}}
+            end
         end
-        #a = auftrag_id.auftrag_id
-        #mix = AuftragFuerProdukt.where("produkt_id != #{produkt.id} AND auftrag_id = #{2}")
-        
-      %>
-       
+      end 
+   
+    #Assoziationshash erstellen
+   while (!$global_array.empty?)
+        a = $global_array.first
+        accu = $global_array.count(a)
+        $global_assoziation_hash.store(a, accu)
+        $global_array.delete(a)
+   end
+  
+    
+    
+    
+  @produkts.each do |produkt|
+      p_id = produkt.id
+      anzahl = AuftragFuerProdukt.where("produkt_id = #{p_id}").count 
+      $global_anzahlhash.store(p_id, anzahl)
+  end
+
+  #Gesamtanzahl der Auftraege zählen
+  anzahl_auftraege = Auftrag.count
+  
+  $global_assoziation_hash.each do |key, value|
+    if value >= @support.to_i
+      
+%>
+    <tr>
+    
+<%
+        vorkommen1 = $global_anzahlhash.values_at(key.first)
+        vorkommen2 = $global_anzahlhash.values_at(key.last)
+
+        konfidenz1 = ((value.to_f/anzahl_auftraege.to_f)/(vorkommen1.first.to_f/anzahl_auftraege.to_f))*100
+        konfidenz2 = ((value.to_f/anzahl_auftraege.to_f)/(vorkommen2.first.to_f/anzahl_auftraege.to_f))*100
+
+        if konfidenz1 >= @konfidenz.to_i
+            %>
+           <td><%= key %></td> 
+           <td><%= value %></td>
+           <td><%= konfidenz1.round(2) %></td>
+           <%
+        end
+ %>
+         
     </tr>
-   <% end %>
+<%  
+    
+    end
+  end
+ 
+  $global_array = [] 
+%>
       
         
 </table>
