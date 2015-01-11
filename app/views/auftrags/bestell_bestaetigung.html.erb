@@ -1,0 +1,103 @@
+<h1>Prüfen und Bestellen</h1>
+<h3> Produkte</h3>
+  <table id="bestell_produktliste">
+    <tr>
+     <th style="width:150px;"> Bild </th>
+     <th style="width:150px;"> Produkt </th>
+     <th style="width:150px;"> Einzelpreis </th>
+     <th style="width:150px;"> Stückzahl </th>
+     <th style="width:150px;"> Preis </th>
+    </tr>
+    
+    <%
+    $id
+    produkt_hash ={}
+    $array.each do |id| 
+      if (!produkt_hash.has_key?(id))
+        produkt_hash.store(id,1)
+      else
+        value = produkt_hash.values_at(id)
+        first_value = value.first
+        first_value += 1
+        produkt_hash.store(id, first_value)
+      end
+    end
+  
+      produkt_hash.each do |key,value|
+        
+    %>
+    <tr>
+      <% 
+    
+       if $summe.nil?
+         $summe = 0
+       end
+     
+     
+        produkte = Produkt.produkt_aus_id(key)
+        erstes_produkt = produkte.first
+       
+      
+        $summe += (erstes_produkt.preis * value)
+        
+        
+      %>
+        
+      <td align="center"><%= image_tag erstes_produkt.bild.url(:medium) %></td>
+      <td align="center"><%= erstes_produkt.name %></td>
+      <td align="center"><%= erstes_produkt.preis %> Euro</td>
+      <td align="center"><%= value %> </td>
+      <td align="center"><%= erstes_produkt.preis * value %> Euro</td>
+      <% 
+       
+      $id = key %>
+    
+
+      
+      <%#*<td align="center"><%= text_field_tag(:anzahl, '', size: 10)%></td>
+    </tr>
+    <% end %>
+    
+</table>
+
+ <h4 style="position:absolute;">Summe</h4>
+<br><br><br>
+<table id="summe"  border="1">
+  <tr>
+     <th style="width:80px;" align="center"><%= $summe %> Euro</th>
+      
+    </tr>
+  
+    <% 
+      $summe = 0
+    %>
+</table>
+
+<%kunde = Kunde.where(:email => session[:user_session]).first%>
+<h3>Kundendaten</h3>
+<table>
+<tr><th>Lieferadresse</th>
+  <th>  Rechnungsadresse</th></tr>
+<tr>
+  <td>
+<span><%=  kunde.vorname%></span><br>
+<span><%=  kunde.nachname%></span><br>
+<span><%=  kunde.strasse%></span>
+<span><%=  kunde.hausnummer%></span><br>
+<span><%=  kunde.plz%></span>
+  </td>
+
+  <td>
+<span align="center"><%=  kunde.vorname%></span><br>
+<span><%=  kunde.nachname%></span><br>
+<span><%=  kunde.strasse%></span>
+<span><%=  kunde.hausnummer%></span><br>
+<span><%=  kunde.plz%></span>
+</td>
+</tr>
+</table>
+
+<h3>  Bezahlart</h3>
+<p>Rechnung</p>
+
+<h3><%= link_to 'Bestellung abschicken', controller: "auftrags", action: "bestellung_abschicken", id: $id%></h3>

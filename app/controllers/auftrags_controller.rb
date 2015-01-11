@@ -89,7 +89,11 @@ class AuftragsController < ApplicationController
      $array = []
      session[:warenkorb_produkt] = $array
     end
-
+    
+    def bestell_bestaetigung
+      
+      
+    end
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_auftrag

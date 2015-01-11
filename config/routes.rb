@@ -12,6 +12,8 @@ Rails.application.routes.draw do
   
   get 'produkts/delete_from_warenkorb'
   
+  get 'auftrags/bestell_bestaetigung'
+  
   get 'auftrags/bestellung_abschicken'
   
   get 'assoziationsanalyse/index'
