@@ -1,17 +1,11 @@
 <!DOCTYPE html>
 
 <%
-  
-  #users = ["Alice", "Bob", "Eve", "Administrator"]
-  users = Kunde.all.map{|obj| obj.email}
- 
 
-  if (not params[:user_post].nil?) and users.include?(params[:user_post])
-    selected = params[:user_post]
-    session[:user_session] = params[:user_post]
-  else
-    selected = session[:user_session]
-  end
+ users = Kunde.all.map{|obj| obj.email}
+    
+  
+
 %>
 
 <html>
@@ -67,6 +61,10 @@
                     </li>
                     <li>
                         <h3>Benutzer auswählen</h3>
+                        <%#= form_tag(session_path, method: "get") do %>
+                          <%#= select_tag 'user_email' , options_for_select(users.each { |user| user})%>  
+                          <%#= submit_tag("OK") %>
+                        <%# end %>
                         <form method="GET">
                           <select name="user_post">
                             <% users.each { |user| %>
@@ -78,12 +76,13 @@
                             <% } %>
                           </select>
                           <input type="submit" value="OK">
+                          
                         </form>
                     </li>
                     <li>
                      
                         <h3>Navigation</h3>
-                        <%  if Kunde.where(:email => session[:user_session]).first.rolle == 1%>
+                        <%  if (Kunde.where(:email => selected).first.rolle == 1)%>
                         <a href="/produkts" style="font-weight:bold; color:purple">Produkte</a><br>
                         <%= link_to 'Warenkorb', controller: "auftrags", action: "warenkorb"%><br>
                         <br>

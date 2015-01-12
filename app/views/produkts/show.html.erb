@@ -31,7 +31,11 @@
 </p>
 
 <%= image_tag @produkt.bild.url(:medium) %>
-
+<%  if Kunde.where(:email => session[:user_session]).first.rolle == 1%>
 <%= link_to 'Edit', edit_produkt_path(@produkt) %> |
 <%= link_to 'Zurück', produkts_path %> |
 <%= link_to 'In den Warenkob', controller: "produkts", action: "adding_to_warenkorb", id: @produkt%>
+<%else %>
+<%= link_to 'Zurück', produkts_path %> |
+<%= link_to 'In den Warenkob', controller: "produkts", action: "adding_to_warenkorb", id: @produkt%>
+<%end%>
