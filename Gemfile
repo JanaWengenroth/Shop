@@ -39,3 +39,5 @@ gem 'cocaine', '~> 0.5.3'
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin]
+
+gem 'piwik_analytics', '~> 1.0.1'
