@@ -24,7 +24,7 @@ class AuftragsController < ApplicationController
   end
 
   def warenkorb
-    session[:warenkorb_produkt] = $array
+    
   end
   
   

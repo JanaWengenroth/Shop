@@ -12,7 +12,7 @@
     <%
     $id
     produkt_hash ={}
-    $array.each do |id| 
+    get_warenkorb.each do |id| 
       if (!produkt_hash.has_key?(id))
         produkt_hash.store(id,1)
       else
@@ -75,7 +75,7 @@
 
 <%kunde = Kunde.where(:email => session[:user_session]).first%>
 <h3>Kundendaten</h3>
-<table>
+<table id="kundendaten">
 <tr><th>Lieferadresse</th>
   <th>  Rechnungsadresse</th></tr>
 <tr>

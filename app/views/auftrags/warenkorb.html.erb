@@ -2,7 +2,7 @@
 <h2 style="font-weight:bold; color:purple">Warenkorb</h2>
 
 
-    <% array = session[:warenkorb_produkt]
+    <% array = get_warenkorb
     if array.empty?
       %>
     <p>In ihrem Warenkorb befinden sich noch keine Artikel</p>
