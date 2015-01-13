@@ -46,7 +46,7 @@
                 <%
                   if session[:first_access].nil?
                     session[:first_access] = Time.now.inspect
-                  end
+                  end 
                   
                   showuser = 'nil!'
                   if not session[:user_session].nil?
